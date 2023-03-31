@@ -6,4 +6,4 @@ RUN mvn clean package
 
 CMD ["java", "-jar", "target/learning1.3-0.0.1-SNAPSHOT.jar"]
 
-EXPOSE 80 
+EXPOSE 8080 443
