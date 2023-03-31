@@ -14,12 +14,12 @@ pipeline{
         }
         stage('create image'){
             steps{
-                sh 'docker build -t learning1.3 .'
+                sh 'docker build -t learning1.3:latest .'
             }
         }
         stage('run image'){
             steps{
-                sh 'docker run -d -p 8090:8080 -p 443:443 learning1.3'
+                sh 'docker run -d -p 8090:8080 -p 443:443 learning1.3:latest'
             }
         }
     }
