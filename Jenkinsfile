@@ -19,7 +19,7 @@ pipeline{
         }
         stage('run image'){
             steps{
-                sh 'docker run -d -p 80:8080 learning1.3'
+                sh 'docker run -d -p 80:8090 learning1.3'
             }
         }
     }
