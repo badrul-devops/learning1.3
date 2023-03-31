@@ -4,6 +4,6 @@ COPY . .
 RUN mvn clean package 
 
 FROM gcr.io/distroless/java:11
-COPY --from=builder /app/target/learning1.3-0.0.1-SNAPSHOT.jar /app/target/learning1.3-0.0.1-SNAPSHOT.jar
-
-CMD ["java", "-jar", "target/learning1.3-0.0.1-SNAPSHOT.jar"]
+COPY --from=builder /app/target/learning1.3-0.0.1-SNAPSHOT.jar /app.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app.jar"]
