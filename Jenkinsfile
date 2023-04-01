@@ -24,7 +24,7 @@ pipeline{
                         def containerID = c.id
                         sh "docker inspect -f . ${containerID}"}
                         }
-                sh 'docker run -d -p 8090:8080 --entrypoint [] myapp:latest java -jar /app.jar'
+                
                  }
             } 
     }
