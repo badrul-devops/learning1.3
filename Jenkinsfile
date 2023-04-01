@@ -14,12 +14,12 @@ pipeline{
         }
         stage('create image'){
             steps{
-                sh 'docker build -t learning1.3:latest . '
+                sh 'docker build -t myapp:latest . '
             }
         }
         stage('run image'){
             steps{
-                sh 'docker run -d -p 8090:8080 learning1.3:latest'
+                sh 'docker run -d -p 8090:8080 myapp:latest'
             }
         }
     }
