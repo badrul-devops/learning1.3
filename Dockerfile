@@ -5,9 +5,7 @@ RUN mvn clean package
 CMD ["java", "-jar", "target/ImageOpsMaven-1.0-SNAPSHOT.jar"]
 
 
-FROM gcr.io/distroless/java:11
+FROM gcr.io/distroless/java:17
 COPY --from=builder /app/target/ImageOpsMaven-1.0-SNAPSHOT.jar /app.jar
-
-ENTRYPOINT ["/bin/bash"]
-CMD ["-c", "java -jar /app.jar"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]
 EXPOSE 8080
