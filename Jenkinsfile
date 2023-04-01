@@ -14,7 +14,7 @@ pipeline{
         }
         stage('create image'){
             steps{
-                sh 'docker build -t learning1.3:latest .'
+                sh 'docker build -t learning1.3:latest . '
             }
         }
         stage('run image'){
