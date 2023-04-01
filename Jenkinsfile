@@ -19,13 +19,8 @@ pipeline{
         }
         stage('run image'){
             steps{
-                 script {
-                        docker.image(imageName).withRun("-p 8080:8080 -d -t --name=${containerName} tail -f /dev/null") { c ->
-                        def containerID = c.id
-                        sh "docker inspect -f . ${containerID}"}
-                        }
-                
-                 }
-            } 
+                 sh 'docker run -d -p 8090:8080 myapp:latest'
+            }
+        }
     }
 }
