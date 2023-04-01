@@ -5,7 +5,7 @@ RUN mvn clean package
 CMD ["java", "-jar", "target/ImageOpsMaven-1.0-SNAPSHOT.jar"]
 
 
-FROM gc
+FROM gcr.io/distroless/java:11
 COPY --from=builder /app/target/ImageOpsMaven-1.0-SNAPSHOT.jar /app.jar
 
 ENTRYPOINT ["/bin/bash"]
