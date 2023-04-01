@@ -19,7 +19,7 @@ pipeline{
         }
         stage('run image'){
             steps{
-                sh 'docker run -d -p 8090:8080 myapp:latest'
+                sh 'docker run -d -p 8090:8080 --entrypoint java myapp:latest -jar /app.jar'
             }
         }
     }
