@@ -4,12 +4,12 @@ pipeline{
         stage('checkout'){
             steps{
                 git 'https://github.com/badrul-devops/learning1.3.git'
-                }
+            }
         }
         stage('build'){
             agent { dockerfile true }
             steps{
-                sh 'mvn clean install'
+                sh 'mvn clean package'
             }
         }
         stage('create image'){
@@ -19,8 +19,13 @@ pipeline{
         }
         stage('run image'){
             steps{
-                sh 'docker run -d -p 8090:8080 --entrypoint java myapp:latest -jar /app.jar'
-            }
-        }
+                 script {
+                        docker.image(imageName).withRun("-p 8080:8080 -d -t --name=${containerName} tail -f /dev/null") { c ->
+                        def containerID = c.id
+                        sh "docker inspect -f . ${containerID}"}
+                        }
+                sh 'docker run -d -p 8090:8080 --entrypoint [] myapp:latest java -jar /app.jar'
+                 }
+            } 
     }
 }
