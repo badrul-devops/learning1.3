@@ -21,7 +21,7 @@ COPY src/ /app/src/
 RUN mvn package
 
 # Stage 2: Create the final image
-FROM openjdk:11-jre-slim
+FROM openjdk:11-jre-slim AS runner
 WORKDIR /app
 COPY --from=builder /app/target/ImageOpsMaven-1.0-SNAPSHOT.jar /app/
 EXPOSE 8080
